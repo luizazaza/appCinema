@@ -53,6 +53,21 @@ class filmeController extends Controller
         return view('gerenciadorFilme',['dadosfilme'=>$dadosFilme]);
     }
 
+    public function homeFilme(){
+        $dadosFilme = Filme::all(); 
+        //dd($dadosFilme);
+        return view('home',['dadosfilme'=>$dadosFilme]);
+    }
+
+    public function pgFilme(Filme $registrosFilmes, Request $request){
+        $dadosFilme = Filme::query(); 
+        $dadosFilme->when($request->id, function($query, $id){
+            $query->where('nomefidilme', 'like', '%'.$id.'%');
+        });
+        $dadosFilme = $dadosFilme ->get();
+
+        return view('pgFilme',['dadosfilme'=>$dadosFilme]);
+    }
 
     public function ApagarFilme(Filme $registrosFilme){
         $registrosFilme->delete();
@@ -63,13 +78,13 @@ class filmeController extends Controller
         return view('xxx',['registrosFilme'=>$registrosFilme]);
     }
 
-    public function AlterarBancoFilme(Filme  $registrosFilmes, Request $request){
+    public function AlterarBancoFilme(Filme $registrosFilmes, Request $request){
         $dadosfilmes = $request->validate([
             'nomefilme'=> 'string|required',
-                'atoresfilme'=> 'string|required',
-                'datalancamentofilme'=> 'date|required',
-                'sinopsefilme'=> 'string|required',
-                'capafilme'=> 'string|required'
+            'atoresfilme'=> 'string|required',
+            'datalancamentofilme'=> 'date|required',
+            'sinopsefilme'=> 'string|required',
+            'capafilme'=> 'string|required'
         ]);
 
         $registrosFilmes->fill($dadosfilmes);

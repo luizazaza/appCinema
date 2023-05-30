@@ -110,7 +110,7 @@ body{
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guardiões da Galáxia</title>
+    <title>Filmes</title>
 </head>
 <body>
 <div class="geral-infoComp">
@@ -118,20 +118,18 @@ body{
         <form method="POST" action="pagamento.php">
             <div class="form-geral">
                 <div class="form-img">
-                    <img id="img-comp-card" src="https://image.tmdb.org/t/p/w500/mgFdvrwlzYi6wLq3zgzOwkiT43k.jpg"/>
+                    <img id="img-comp-card">{{$dadosfilmes->capafilme}}/>
                 </div>
                 <div class="form-info-comp">
-                    <h1 class="comp-titulo">O Gato de Botas 2</h1>
+                    <h1 class="comp-titulo">{{$dadosfilmes->nomefilme}}</h1>
                     <input type="submit" class="btn-comprar" name="Comprar2" value="Comprar">
                     <br><br>
-                    <p class="catComp"><b>Data de lançamento: </b>66/66/6666</p>
+                    <p class="catComp"><b>Data de lançamento: </b>{{$dadosfilmes->datalancamentofilme}}</p>
                     <h2>Sinopse</h2>
-                    <p class="descComp">sinopse do filme sinopse do filme sinopse do filme sinopse do filme sinopse do filme sinopse do filme sinopse do filme </p>
+                    <p class="descComp">{{$dadosfilmes->sinopsefilme}}</p>
                     <h2>Atores</h2>
                     <ul>
-                        <li>Ator 1</li>
-                        <li>Ator 2</li>
-                        <li>Ator 3</li>
+                        <li>{{$dadosfilmes->atoresfilme}}</li>
                     </ul>
                 </div>
             </div>

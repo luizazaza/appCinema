@@ -6,6 +6,8 @@ use App\Http\Controllers\funcionarioController;
 use App\Http\Controllers\cadastroSala;
 use App\Http\Controllers\poltronaController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,14 +19,13 @@ use App\Http\Controllers\poltronaController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[filmeController::class,'homeFilme'])->name('home');
+
+Route::get('/pg-filme',[filmeController::class,'pgFilme'])->name('pg-filme');
 
 Route::get('/cadastro-Filme',[filmeController::class,'buscaCadastroFilme'])->name('busca-cadastro-filme');
 
 Route::post('/cadastro-Filme',[filmeController::class,'cadastrarFilme'])->name('cadastro-filme');
-
 
 Route::get('/cadastro-Sala',[cadastroSala::class,'buscaCadastroSala']);
 
@@ -46,5 +47,3 @@ Route::post('/cadastro-poltrona',[poltronaController::class,'cadastrarPoltrona']
 Route::get('/gerenciar-poltrona',[poltronaController::class,'MostrarGerenciadorPoltrona'])->name('gerenciar-poltrona');
 Route::delete('/gerenciar-poltrona/{registrosPoltronas}',[poltronaController::class,'ApagarPoltrona'])->name('apagar-poltrona');
 Route::put('/gerenciar-poltrona/{registrosPoltronas}',[poltronaController::class,'AlterarBancoPoltrona'])->name('alterar-banco-poltrona');
-
-Route::get('/pg-filme',[pgfilmeController::class,'MostrarPgFilme'])->name('pg-filme');

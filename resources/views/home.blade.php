@@ -1,3 +1,6 @@
+
+@extends('padrao')
+@section('content')
 <style>
     .titulo{
         font-family: 'Courier New', Courier, monospace;
@@ -59,8 +62,6 @@
 
 
 </style>
-@extends('padrao')
-@section('content')
 <br><br>
 <center>
     <img src="https://redepara.com.br/imagens/galeria/118804/thumbs/31677e1147a7449e9e6dca278045674f.jpg" alt="banner Guardiôes da galáxia" width="70%">
@@ -71,31 +72,18 @@
 
     <br><br><br>
 
+@foreach($dadosfilme as $dadosfilmes)
     <div class="geral-card">
         <div class="card" style="width: 18rem; background-color: #15151f; color: #fff">
             <img src="https://image.tmdb.org/t/p/w500/mgFdvrwlzYi6wLq3zgzOwkiT43k.jpg" height="380px" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Guardiões da Galáxia 3</h5>
-                <a href="saibamaisquardioes.blade.php" class="btn-geral">Saber mais</a>
+                <h5 class="card-title">{{$dadosfilmes->nomefilme}}</h5>
+                <a href="{{url('/pg-filme')}}" class="btn-geral">Saber mais</a>
             </div>
         </div>
-        
-        <div class="card" id="margin" style="width: 18rem; background-color: #15151f; color: #fff">
-            <img src="https://stcotvfoco.com.br/2019/12/banner_frozen.jpg" height="380px" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Frozen 2</h5>
-                <a href="frmCompra.php" class="btn-geral">Saber mais</a>
-            </div>
-        </div>
-
-        <div class="card" id="margin" style="width: 18rem; background-color: #15151f; color: #fff">
-            <img src="https://uploads.jovemnerd.com.br/wp-content/uploads/2022/12/aranhaverso_2_poster__2220u0-760x950.jpg" height="380px" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Homem-Aranha</h5>
-                <a href="frmCompra.php" class="btn-geral">Saber mais</a>
-            </div>
-        </div>
-    </div>
+     </div>
+@endforeach    
+    
 
     <br><br>
 </center>
