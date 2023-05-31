@@ -50,7 +50,7 @@ class filmeController extends Controller
         $dadosFilme = $dadosFilme ->get(); 
 
 
-        return view('gerenciadorFilme',['dadosfilme'=>$dadosFilme]);
+        
     }
 
     public function homeFilme(){
@@ -59,14 +59,16 @@ class filmeController extends Controller
         return view('home',['dadosfilme'=>$dadosFilme]);
     }
 
-    public function pgFilme(Filme $registrosFilmes, Request $request){
-        $dadosFilme = Filme::query(); 
-        $dadosFilme->when($request->id, function($query, $id){
-            $query->where('nomefidilme', 'like', '%'.$id.'%');
-        });
-        $dadosFilme = $dadosFilme ->get();
-
-        return view('pgFilme',['dadosfilme'=>$dadosFilme]);
+    public function pgFilme($id)
+    {
+        $dadosFilme = Filme::find($id);
+    
+        if (!$dadosFilme) {
+    
+             return 'Nenhum filme encontrado.';
+        }
+    
+        return view('pgFilme', ['dadosfilme' => $dadosFilme]);
     }
 
     public function ApagarFilme(Filme $registrosFilme){

@@ -37,7 +37,7 @@ body{
 }
 .form-info-comp{
     margin-left: 3%;
-    margin-top: -2%;
+    margin-top: 1%;
 }
 .btn-comprar{  
     border-radius: 4px;
@@ -66,6 +66,9 @@ body{
     background-color: #ffeba7;
     color: #7D0202;
     box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+    margin-left: 5.5em;
+    align: center;
+    
   }
   .btn-comprar:active,
   .btn-comprar:focus{  
@@ -120,31 +123,35 @@ body{
     <title>Filmes</title>
 </head>
 <body>
-@foreach($dadosfilme as $dadosfilmes)
+@if($dadosfilme)
 <div class="geral-infoComp">
     <div class="compra">
         <form method="POST" action="pagamento.php">
             <div class="form-geral">
                 <div class="form-img">
-                    <img id="img-comp-card" src="img/gatodebotas2_poster.jpg"/>
+                    <img id="img-comp-card" src="https://image.tmdb.org/t/p/w500/mgFdvrwlzYi6wLq3zgzOwkiT43k.jpg}"/>
                 </div>
                 <div class="form-info-comp">
-                    <h1 class="comp-titulo">{{$dadosfilmes->nomefilme}}</h1>
-                    <input type="submit" class="btn-comprar" name="Comprar2" value="Comprar">
-                    <br><br>
-                    <p class="catComp"><b>Data de lançamento: </b>{{$dadosfilmes->datalancamento}}</p>
+                    <h1 class="comp-titulo">{{$dadosfilme->nomefilme}}</h1>
+                    
+                    
+                    <br><br> 
+                    <p class="catComp"><b>Data de lançamento: </b>{{$dadosfilme->datalancamentofilme}}</p>
                     <h2>Sinopse</h2>
-                    <p class="descComp">{{$dadosfilmes->sinopsefilme}}</p>
+                    <p class="descComp">{{$dadosfilme->sinopsefilme}}</p>
                     <h2>Atores</h2>
                     <ul>
-                        <li>{{$dadosfilmes->atoresfilme}}</li>
+                        <li>{{$dadosfilme->atoresfilme}}</li>
                     </ul>
+                    <!-- <input type="submit" class="btn-comprar" name="Comprar2" value="Agendar" onclick="redirecionar()"> -->
                 </div>
             </div>
         </form>
     </div>
-    </div>
-@endforeach    
+</div>
+@else
+    <p>Nenhum filme encontrado.</p>
+@endif
     
 </body>
 </html>

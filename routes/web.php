@@ -21,7 +21,11 @@ use App\Http\Controllers\poltronaController;
 
 Route::get('/',[filmeController::class,'homeFilme'])->name('home');
 
-Route::get('/pg-filme',[filmeController::class,'pgFilme'])->name('pg-filme');
+//Route::get('/pg-filme/{registrosFilme}',[filmeController::class,'pgFilme'])->name('pg-filme');
+Route::get('/pg-filme/{id}', [filmeController::class,'pgFilme'])->name('pg-filme');
+
+
+
 
 Route::get('/cadastro-Filme',[filmeController::class,'buscaCadastroFilme'])->name('busca-cadastro-filme');
 

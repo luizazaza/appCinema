@@ -78,13 +78,14 @@
             <img src="https://image.tmdb.org/t/p/w500/mgFdvrwlzYi6wLq3zgzOwkiT43k.jpg" height="380px" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{$dadosfilmes->nomefilme}}</h5>
-                <a href="{{url('/pg-filme')}}" class="btn-geral">Saber mais</a>
+                <a href="{{ route('pg-filme', ['id' => $dadosfilmes->id]) }}" class="btn-geral">Saber mais</a>
+
+
             </div>
         </div>
      </div>
 @endforeach    
     
-
     <br><br>
 </center>
 
